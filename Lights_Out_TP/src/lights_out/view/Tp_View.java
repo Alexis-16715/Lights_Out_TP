@@ -4,6 +4,7 @@ import javax.swing.*;
 
 
 import java.awt.*;
+import java.net.URL;
 
 public class Tp_View {
     private JFrame frame;
@@ -21,6 +22,8 @@ public class Tp_View {
     private JLabel victoryLabel;
     
     
+    private URL lighOff = getClass().getResource("/images/Light Off.png");
+    
     public Tp_View() {
 		initialize();
 	}
@@ -33,6 +36,9 @@ public class Tp_View {
         frame.setBounds(100, 100, 645, 440);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Lights Out");
+        
+        ImageIcon icon = new ImageIcon(lighOff);
+        frame.setIconImage(icon.getImage());
 		
 		bottonStart = new JButton("Game Start");
 		bottonStart.setBounds(33, 63, 138, 45);
