@@ -1,4 +1,4 @@
-package window.controller;
+package lights_out.controller;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -10,9 +10,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
-import window.model.Tp_Model;
-import window.model.Light_Bulb;
-import window.view.Tp_View;
+import lights_out.model.Light_Bulb;
+import lights_out.model.Tp_Model;
+import lights_out.view.Tp_View;
 
 public class TP_Controller {
 	
@@ -140,4 +140,5 @@ public class TP_Controller {
             }
         });
 	}
+	
 }

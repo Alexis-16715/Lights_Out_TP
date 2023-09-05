@@ -1,4 +1,4 @@
-package window.model;
+package lights_out.model;
 
 import java.util.Random;
 

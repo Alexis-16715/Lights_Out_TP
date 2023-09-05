@@ -1,4 +1,4 @@
-package window.view;
+package lights_out.view;
 
 import javax.swing.*;
 

@@ -1,4 +1,4 @@
-package window.model;
+package lights_out.model;
 
 public class Light_Bulb {
 	private Boolean stateLight;
