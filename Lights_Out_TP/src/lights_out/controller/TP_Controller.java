@@ -1,6 +1,5 @@
 package lights_out.controller;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
@@ -128,8 +127,6 @@ public class TP_Controller {
         model = new Tp_Model();
         updateView();
     }
-	
-
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
             public void run() {

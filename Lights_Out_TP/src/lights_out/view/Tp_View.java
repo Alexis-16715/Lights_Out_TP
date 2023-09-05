@@ -47,7 +47,7 @@ public class Tp_View {
     }
     
     private JButton bottonNewGame() {
-    	JButton bottonNewGame = new JButton("New Game");
+    	bottonNewGame = new JButton("New Game");
 		bottonNewGame.setBounds(510, 63, 109, 45);
 		frame.getContentPane().add(bottonNewGame);
 		return bottonNewGame;
