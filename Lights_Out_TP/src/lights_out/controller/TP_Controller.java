@@ -98,7 +98,7 @@ public class TP_Controller {
         buttons[row][col].addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 model.toggleState(row, col);
-                //this for the update of the icons
+                //this is for the update in the icons
                 updateView();
             }
         });
