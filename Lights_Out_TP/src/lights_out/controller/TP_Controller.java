@@ -133,7 +133,6 @@ public class TP_Controller {
 		if(nivel == 5)
 	        buttons = view.getGameInterface5x5();
         attemptsLabel = view.getAttemtsLabel();
-        labelVictory = view.getVictory();
         
         
         //This to Set-Up de New Game Botton
@@ -234,7 +233,10 @@ public class TP_Controller {
         			}
         		}
         		hideButtons(newGame,newGame.isVisible());
+        		hideButtons(buttonMenu,buttonMenu.isVisible());
         		attemptsLabel.setVisible(false);
+        		
+        		labelVictory = view.getLabelVictory();
 
         		buttonvolverAlMenu = view.getBottonvolverAlMenu();
         		attachListenerbuttonvolverAlMenu(buttonvolverAlMenu); 

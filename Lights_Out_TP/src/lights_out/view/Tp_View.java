@@ -85,7 +85,7 @@ public class Tp_View {
     
     private JButton bottonvolverAlMenu() {
     	bottonvolverAlMenu = new JButton("volverAlMenu");
-    	bottonvolverAlMenu.setBounds(244, 280, 150, 45);
+    	bottonvolverAlMenu.setBounds(310, 400, 150, 45);
 		frame.getContentPane().add(bottonvolverAlMenu);
 		return bottonvolverAlMenu;
     }
@@ -94,6 +94,19 @@ public class Tp_View {
     	return bottonvolverAlMenu();
     }
     
+    
+    private JLabel labelVictory() {
+    	victoryLabel = new JLabel("Felicitaciones!!!");
+		victoryLabel.setForeground(Color.BLUE);
+    	frame.getContentPane().setLayout(null);
+    	victoryLabel.setFont(new Font("MV Boli", Font.BOLD, 30));
+    	victoryLabel.setBounds(216, 37, 233, 60);
+		return victoryLabel;
+    }
+    
+    public JLabel getLabelVictory() {
+    	return labelVictory();
+    }
     private JButton button3x3() {
     	button3x3 = new JButton("3x3");
 		button3x3.setBounds(325, 125, 138, 45);
@@ -187,18 +200,7 @@ public class Tp_View {
     public JLabel getAttemtsLabel () {
     	return attemtsLabel();
     }
-    
-    private JLabel victoryLabel() {
-    	victoryLabel = new JLabel("");
-    	victoryLabel.setBounds(513, 278, 106, 30);
-        frame.getContentPane().add(victoryLabel);
-		return victoryLabel;
-    }
-    
-    public JLabel getVictory () {
-    	return victoryLabel();
-    }
-    
+ 
     
     public JButton[][] getGameInterface3x3() {
     	return gameInterfaceBottons3x3();
