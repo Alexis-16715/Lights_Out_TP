@@ -16,7 +16,12 @@ public class Tp_View {
     private JButton bottonStart;
     private JButton bottonExit;
     private JButton bottonNewGame;
-    
+    private JButton bottonDificulty;
+    private JButton bottonvolverAlMenu;
+    private JButton button3x3;
+    private JButton button4x4;
+    private JButton button5x5;
+    private JButton buttonMenu;
     
     private JLabel attemptsLabel;
     private JLabel victoryLabel;
@@ -31,9 +36,9 @@ public class Tp_View {
 
     private void initialize() {
     	frame = new JFrame();
-        frame.getContentPane().setBackground(new Color(255, 255, 255));
+        frame.getContentPane().setBackground(new Color(238, 184, 18));
         frame.getContentPane().setLayout(null);
-        frame.setBounds(100, 100, 645, 440);
+        frame.setBounds(100, 100, 800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Lights Out");
         
@@ -41,20 +46,24 @@ public class Tp_View {
         frame.setIconImage(icon.getImage());
 		
 		bottonStart = new JButton("Game Start");
-		bottonStart.setBounds(33, 63, 138, 45);
+		bottonStart.setBounds(325, 125, 138, 45);
 		getFrame().getContentPane().add(bottonStart);
 		
+		bottonDificulty = new JButton("Dificulty");
+		bottonDificulty.setBounds(325, 225, 138, 45);
+		frame.getContentPane().add(bottonDificulty);
+		
 		bottonExit = new JButton("Exit");
-		bottonExit.setBounds(33, 134, 138, 45);
+		bottonExit.setBounds(325, 325, 138, 45);
 		frame.getContentPane().add(bottonExit);
 		
-		
+	
 		
     }
     
     private JButton bottonNewGame() {
     	bottonNewGame = new JButton("New Game");
-		bottonNewGame.setBounds(510, 63, 109, 45);
+		bottonNewGame.setBounds(650, 63, 109, 45);
 		frame.getContentPane().add(bottonNewGame);
 		return bottonNewGame;
     }
@@ -63,11 +72,97 @@ public class Tp_View {
     	return bottonNewGame();
     }
     
+    private JButton buttonMenu() {
+    	buttonMenu = new JButton("Menu");
+		buttonMenu.setBounds(650, 160,109, 45);
+		frame.getContentPane().add(buttonMenu);
+		return buttonMenu;
+    }
     
-    private JButton[][] gameInterfaceBottons () {
+    public JButton getButtonMenu() {
+    	return buttonMenu();
+    }
+    
+    private JButton bottonvolverAlMenu() {
+    	bottonvolverAlMenu = new JButton("volverAlMenu");
+    	bottonvolverAlMenu.setBounds(244, 280, 150, 45);
+		frame.getContentPane().add(bottonvolverAlMenu);
+		return bottonvolverAlMenu;
+    }
+    
+    public JButton getBottonvolverAlMenu() {
+    	return bottonvolverAlMenu();
+    }
+    
+    private JButton button3x3() {
+    	button3x3 = new JButton("3x3");
+		button3x3.setBounds(325, 125, 138, 45);
+		frame.getContentPane().add(button3x3);
+		return button3x3;
+    }
+    
+    public JButton getButton3x3() {
+    	return button3x3();
+    }
+    private JButton button4x4() {
+    	button4x4 = new JButton("4x4");
+		button4x4.setBounds(325, 225, 138, 45);
+		frame.getContentPane().add(button4x4);
+		return button4x4;
+    }
+    
+    public JButton getButton4x4() {
+    	return button4x4();
+    }
+    private JButton button5x5() {
+    	button5x5 = new JButton("5x5");
+		button5x5.setBounds(325, 325, 138, 45);
+		frame.getContentPane().add(button5x5);
+		return button5x5;
+    }
+    
+    public JButton getButton5x5() {
+    	return button5x5();
+    }
+    
+    
+    private JButton[][] gameInterfaceBottons3x3 () {
+    	lights = new JButton[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                JButton button = new JButton("");
+                // Set button properties here
+                
+                button.setIcon(new ImageIcon(""));
+                button.setBounds(220+j*100, 120+i*90, 50, 50);
+                frame.getContentPane().add(button);
+                lights[j][i] = button;
+            }
+        }
+        
+        return lights;
+    }
+    private JButton[][] gameInterfaceBottons4x4 () {
     	lights = new JButton[4][4];
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
+                JButton button = new JButton("");
+                // Set button properties here
+                
+                button.setIcon(new ImageIcon(""));
+                button.setBounds(180+j*100, 70+i*90, 50, 50);
+                frame.getContentPane().add(button);
+                lights[j][i] = button;
+            }
+        }
+        
+        return lights;
+    }
+    
+    private JButton[][] gameInterfaceBottons5x5 () {
+    	lights = new JButton[5][5];
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
                 JButton button = new JButton("");
                 // Set button properties here
                 
@@ -81,9 +176,10 @@ public class Tp_View {
         return lights;
     }
     
+    
     private JLabel attemtsLabel() {
     	attemptsLabel = new JLabel("");
-        attemptsLabel.setBounds(513, 361, 106, 30);
+        attemptsLabel.setBounds(650, 361, 106, 30);
         frame.getContentPane().add(attemptsLabel);
 		return attemptsLabel;
     }
@@ -104,13 +200,24 @@ public class Tp_View {
     }
     
     
-    public JButton[][] getGameInterface() {
-    	return gameInterfaceBottons();
+    public JButton[][] getGameInterface3x3() {
+    	return gameInterfaceBottons3x3();
     }
+    public JButton[][] getGameInterface4x4() {
+    	return gameInterfaceBottons4x4();
+    }
+    
+    public JButton[][] getGameInterface5x5() {
+    	return gameInterfaceBottons5x5();
+    }
+    
     
     
     public JButton getBottonsStart() {
     	return bottonStart;
+    }
+    public JButton getBottonsDificulty() {
+    	return bottonDificulty;
     }
     
     public JButton getBottonsExit() {

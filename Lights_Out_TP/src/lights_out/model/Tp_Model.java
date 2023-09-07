@@ -5,9 +5,9 @@ import java.util.Random;
 public class Tp_Model {
 	private Light_Bulb[][] pattern;
     private int numberAttempts;
-	public Tp_Model() {
+	public Tp_Model(int x) {
 		// Every time you call a new TP_Model you have to put new date in the matrix
-		pattern = new Light_Bulb[4][4];
+		pattern = new Light_Bulb[x][x];
         Random rand = new Random();
 
         for (int row = 0; row < pattern.length; row++) {
