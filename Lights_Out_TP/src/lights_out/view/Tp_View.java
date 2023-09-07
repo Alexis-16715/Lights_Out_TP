@@ -56,7 +56,6 @@ public class Tp_View {
 		bottonExit = new JButton("Exit");
 		bottonExit.setBounds(325, 325, 138, 45);
 		frame.getContentPane().add(bottonExit);
-		
 	
 		
     }
@@ -98,9 +97,11 @@ public class Tp_View {
     private JLabel labelVictory() {
     	victoryLabel = new JLabel("Felicitaciones!!!");
 		victoryLabel.setForeground(Color.BLUE);
+  
     	frame.getContentPane().setLayout(null);
     	victoryLabel.setFont(new Font("MV Boli", Font.BOLD, 30));
     	victoryLabel.setBounds(216, 37, 233, 60);
+    	frame.getContentPane().add(victoryLabel);
 		return victoryLabel;
     }
     
