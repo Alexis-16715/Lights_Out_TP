@@ -5,8 +5,9 @@ import java.util.Random;
 public class Tp_Model {
 	private Light_Bulb[][] pattern;
     private int numberAttempts;
+    
+    //Cada vez que se llama a esta funcion, se crea la matrix
 	public Tp_Model(int x) {
-		// Every time you call a new TP_Model you have to put new date in the matrix
 		pattern = new Light_Bulb[x][x];
         Random rand = new Random();
 
@@ -22,13 +23,14 @@ public class Tp_Model {
         return pattern;
     }
     
-    //this is to change the change the state from true or false
+    
+    //Esto cambia el estado matrix, de Verdadero a Falso, tambien para lo contrario
+    //Tambien cambia el estado de la matrix de la columna y fila selecionada
     public void toggleState(int specificRow, int specificCol) {
     	numberAttempts++;
-    	//specific
     	for(int row = 0; row < pattern.length; row++) {
     		
-    		// toggleState you can change from true to false and vice bersa
+    		// Cambia de verdadero a falso, y viseversa 
     		pattern[row][specificCol].toggleState();
     	}
     	
@@ -40,8 +42,8 @@ public class Tp_Model {
     
     
     
-    //this check if the matrix, so see if the ALL of the matrix is true
-    public boolean wonAllLihhtOut(){
+    //Checkea si se gano el juego.
+    public boolean wonAllLightsOut(){
     	boolean ret = true;
     	for(int col = 0; col < pattern.length; col++) {
     		for(int row = 0; row < pattern[0].length; row++) {

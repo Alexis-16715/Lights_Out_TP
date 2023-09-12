@@ -18,22 +18,26 @@ public class TP_Controller {
 	private Tp_View view;
 	private Tp_Model model;
 	private URL lightOn = getClass().getResource("/images/Light On.png");
-	private URL lighOff = getClass().getResource("/images/Light Off.png");
+	private URL lightOff = getClass().getResource("/images/Light Off.png");
+	
+	
 	private JLabel attemptsLabel;
 	private JLabel labelVictory;
-	private static int nivel = 3;
+	
+	
+	
+	private static int level = 3;
 	private JButton newGame;
 	private JButton buttonStart;
 	private JButton buttonExit;
 	private JButton buttonDificulty;
-	private JButton buttonvolverAlMenu;
+	private JButton buttonBackToMenu;
+	private JButton buttonMenu;
+	
+	
     private JButton button3x3;
     private JButton button4x4;
     private JButton button5x5;
-    private JButton buttonMenu;
-	
-	
-	
 	
 	private JButton[][] buttons;
 	
@@ -71,45 +75,34 @@ public class TP_Controller {
 	        		hideButtons(buttonDificulty,buttonDificulty.isVisible());
 	        	
 	        		button3x3 = view.getButton3x3();
+	        		
+	        		
 	        		button3x3.addActionListener (new ActionListener(){
 	        			 public void actionPerformed(ActionEvent e) {
-	        				hideButtons(button3x3,button3x3.isVisible());
-	     	        		hideButtons(button4x4,button4x4.isVisible());
-	     	        		hideButtons(button5x5,button5x5.isVisible());
-	     	        		hideButtons(buttonStart,buttonStart.isVisible());
-	    	        		hideButtons(buttonExit,buttonExit.isVisible());
-	    	        		hideButtons(buttonDificulty,buttonDificulty.isVisible());
-	    	        		nivel = 3;
-	    	        		model = new Tp_Model(nivel);
+	        				hideMultipleButtons ();
+	    	        		level = 3;
+	    	        		model = new Tp_Model(level);
 	    	        		
 	     	        		
 	        			 
 	        			 }
 	        		});
+	        		
 	        		button4x4 = view.getButton4x4();
 	        		button4x4.addActionListener (new ActionListener(){
 	        			 public void actionPerformed(ActionEvent e) {
-	        				hideButtons(button3x3,button3x3.isVisible());
-		     	        	hideButtons(button4x4,button4x4.isVisible());
-		     	        	hideButtons(button5x5,button5x5.isVisible());
-		     	        	hideButtons(buttonStart,buttonStart.isVisible());
-		    	        	hideButtons(buttonExit,buttonExit.isVisible());
-		    	        	hideButtons(buttonDificulty,buttonDificulty.isVisible());
-		    	        	nivel = 4;
-		    	        	model = new Tp_Model(nivel);
+	        				hideMultipleButtons ();
+		    	        	level = 4;
+		    	        	model = new Tp_Model(level);
 	        			 }
 	        		});
+	        		
 	        		button5x5 = view.getButton5x5();
 	        		button5x5.addActionListener (new ActionListener(){
 	        			 public void actionPerformed(ActionEvent e) {
-	        				hideButtons(button3x3,button3x3.isVisible());
-		     	        	hideButtons(button4x4,button4x4.isVisible());
-		     	        	hideButtons(button5x5,button5x5.isVisible());
-		     	        	hideButtons(buttonStart,buttonStart.isVisible());
-		    	        	hideButtons(buttonExit,buttonExit.isVisible());
-		    	        	hideButtons(buttonDificulty,buttonDificulty.isVisible());
-		    	        	nivel = 5;
-		    	        	model = new Tp_Model(nivel);
+		    	        	hideMultipleButtons();
+		    	        	level = 5;
+		    	        	model = new Tp_Model(level);
 	        			 }
 	        		});
 	            }
@@ -118,24 +111,39 @@ public class TP_Controller {
 	}
 	
 	
-	//As the name implide, this hide a button.
+	
+	
+	
+	
+	
+	//Como el nombre lo implica, esto solo esconde un boton si llamado
 	private void hideButtons(JButton button, Boolean visible) {
 		button.setVisible(!visible);
+	}
+	
+	//Esta funcion esta hecha para esconder los menus, ayuda a minimizar el codigo y permitir que se entienda mejor
+	private void hideMultipleButtons () {
+		hideButtons(button3x3, button3x3.isVisible());
+		hideButtons(button4x4, button4x4.isVisible());
+		hideButtons(button5x5, button5x5.isVisible());
+		hideButtons(buttonStart, buttonStart.isVisible());
+		hideButtons(buttonExit, buttonExit.isVisible());
+		hideButtons(buttonDificulty, buttonDificulty.isVisible());
 	}
 	
 	
 	private void initializeViewGame() {
 		Light_Bulb[][] stateLightBulb = model.getStateGame();
-		if(nivel == 3)
+		if(level == 3)
 			buttons = view.getGameInterface3x3();
-		if(nivel == 4)
+		if(level == 4)
 	        buttons = view.getGameInterface4x4();
-		if(nivel == 5)
+		if(level == 5)
 	        buttons = view.getGameInterface5x5();
         attemptsLabel = view.getAttemtsLabel();
         
         
-        //This to Set-Up de New Game Botton
+        //Esto para configurar un nuevo botón de juego
         newGame = view.getBottonNewGame();
 			attachListenerNewGame(newGame);
 			
@@ -143,18 +151,18 @@ public class TP_Controller {
 			attachListenerbuttonMenu(buttonMenu);
 	        
         
-        // Set up the Label Attempts
+        // Configurar los "Label Attempts"
         
         attemptsLabel.setText("Attempts : " + model.getNumberAttemps());
         
-        for (int i = 0; i < stateLightBulb.length; i++) {
-            for (int j = 0; j < stateLightBulb[0].length; j++) {
-            	buttons[i][j].setIcon(new ImageIcon(stateLightBulb[i][j].getSwich_On_Or_Off() ? lighOff : lightOn));
-            	attachListenerToButton(i, j);
+        for (int row = 0; row < stateLightBulb.length; row++) {
+            for (int column = 0; column < stateLightBulb[0].length; column++) {
+            	buttons[row][column].setIcon(new ImageIcon(stateLightBulb[row][column].getSwich_On_Or_Off() ? lightOff : lightOn));
+            	attachListenerToButton(row, column);
             }
         }
         
-        // Calls it to update the game
+        // Esto actualiza el juego.
         updateView();
     }
 	
@@ -172,11 +180,12 @@ public class TP_Controller {
 		buttonMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	for(int i = 0 ; i < buttons.length; i++) {
-        			for(int j = 0 ; j < buttons.length; j++) {
-        				hideButtons(buttons[j][i],buttons[j][i].isVisible());
+            	for(int row = 0 ; row < buttons.length; row++) {
+        			for(int column = 0 ; column < buttons.length; column++) {
+        				hideButtons(buttons[column][row],buttons[column][row].isVisible());
         			}
         		}
+            	
         		hideButtons(newGame,newGame.isVisible());
         		attemptsLabel.setVisible(false);
         		hideButtons(buttonStart,buttonStart.isVisible());
@@ -187,8 +196,10 @@ public class TP_Controller {
             }
         });
 	}
+	
+	//Esta funcion se llama para traer el menu de vuelta
 
-	private void attachListenerbuttonvolverAlMenu(JButton buttonvolverAlMenu) {
+	private void attachListenerButtonBackToMenu(JButton buttonvolverAlMenu) {
 		buttonvolverAlMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -201,32 +212,36 @@ public class TP_Controller {
         });
 	}
 	
-	//This change the light state, and before you ask, this have to Model first to change it, it change the row and the col of the matrix. 
+	//Esto llama a funcion para cambiar el valor de la matrix, dentro de esa funcion de toggleState, cambia el estado de la fila y la columna de la matrix
+	//Para que cumpla con el juego
 	private void attachListenerToButton(int row, int col) {
         buttons[row][col].addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 model.toggleState(row, col);
-                //this is for the update in the icons
+                //Esto es para actualizar los botones
                 updateView();
             }
         });
     }
 	
 	
+	
 	private void updateView() {
 		Light_Bulb[][] stateLightBulb = model.getStateGame();
         
-        //Update on the lights Icon
+        //Actualiza los iconos de las luces
         
         for (int column = 0; column < stateLightBulb.length; column++) {
             for (int row = 0; row < stateLightBulb[column].length; row++) {
-                buttons[column][row].setIcon(new ImageIcon(stateLightBulb[column][row].getSwich_On_Or_Off() ? lighOff : lightOn));
+                buttons[column][row].setIcon(new ImageIcon(stateLightBulb[column][row].getSwich_On_Or_Off() ? lightOff : lightOn));
             }
         }
         
-        // Updastes the label and check if it won the game
+        //Actualiza el texto para llevar en cuenta la cantidad de clicks
         attemptsLabel.setText("Clicks : " + model.getNumberAttemps());
-        if (model.wonAllLihhtOut()) {
+        
+        //Verifica si gano el juego, si es asi, se esconde los botones y se coloca una pantalla felizitanto al jugador
+        if (model.wonAllLightsOut()) {
         		for(int i = 0 ; i < buttons.length; i++) {
         			for(int j = 0 ; j < buttons.length; j++) {
         				hideButtons(buttons[j][i],buttons[j][i].isVisible());
@@ -238,8 +253,8 @@ public class TP_Controller {
         		
         		labelVictory = view.getLabelVictory();
 
-        		buttonvolverAlMenu = view.getBottonvolverAlMenu();
-        		attachListenerbuttonvolverAlMenu(buttonvolverAlMenu); 
+        		buttonBackToMenu = view.getBottonvolverAlMenu();
+        		attachListenerButtonBackToMenu(buttonBackToMenu); 
         		startNewGame();
 
         	
@@ -248,14 +263,16 @@ public class TP_Controller {
         
     }
 	
+	
+	//Si se llama empienza un nuevo juego.
 	private void startNewGame() {
-        model = new Tp_Model(nivel);
+        model = new Tp_Model(level);
         updateView();
     }
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-            	Tp_Model model = new Tp_Model(nivel);
+            	Tp_Model model = new Tp_Model(level);
             	Tp_View view = new Tp_View();
                 new TP_Controller(model, view);
                 view.getFrame().setVisible(true);

@@ -82,20 +82,20 @@ public class Tp_View {
     	return buttonMenu();
     }
     
-    private JButton bottonvolverAlMenu() {
-    	bottonvolverAlMenu = new JButton("volverAlMenu");
+    private JButton bottonBacktoMainMenu() {
+    	bottonvolverAlMenu = new JButton("Back to main menu");
     	bottonvolverAlMenu.setBounds(310, 400, 150, 45);
 		frame.getContentPane().add(bottonvolverAlMenu);
 		return bottonvolverAlMenu;
     }
     
     public JButton getBottonvolverAlMenu() {
-    	return bottonvolverAlMenu();
+    	return bottonBacktoMainMenu();
     }
     
     
     private JLabel labelVictory() {
-    	victoryLabel = new JLabel("Felicitaciones!!!");
+    	victoryLabel = new JLabel("Congratulations!!!");
 		victoryLabel.setForeground(Color.BLUE);
   
     	frame.getContentPane().setLayout(null);
@@ -108,6 +108,8 @@ public class Tp_View {
     public JLabel getLabelVictory() {
     	return labelVictory();
     }
+    
+    //Esta tres funciones configurar el botones para configurar la dificultad
     private JButton button3x3() {
     	button3x3 = new JButton("3x3");
 		button3x3.setBounds(325, 125, 138, 45);
@@ -115,19 +117,14 @@ public class Tp_View {
 		return button3x3;
     }
     
-    public JButton getButton3x3() {
-    	return button3x3();
-    }
+    
     private JButton button4x4() {
     	button4x4 = new JButton("4x4");
 		button4x4.setBounds(325, 225, 138, 45);
 		frame.getContentPane().add(button4x4);
 		return button4x4;
     }
-    
-    public JButton getButton4x4() {
-    	return button4x4();
-    }
+
     private JButton button5x5() {
     	button5x5 = new JButton("5x5");
 		button5x5.setBounds(325, 325, 138, 45);
@@ -135,22 +132,33 @@ public class Tp_View {
 		return button5x5;
     }
     
+    
+    
+    public JButton getButton3x3() {
+    	return button3x3();
+    }
+    
+    public JButton getButton4x4() {
+    	return button4x4();
+    }
+    
     public JButton getButton5x5() {
     	return button5x5();
     }
     
     
+    //Esta tres funciones configurar la matrix para los botones
+    
     private JButton[][] gameInterfaceBottons3x3 () {
     	lights = new JButton[3][3];
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int row = 0; row < 3; row++) {
+            for (int column = 0; column < 3; column++) {
                 JButton button = new JButton("");
-                // Set button properties here
                 
                 button.setIcon(new ImageIcon(""));
-                button.setBounds(220+j*100, 120+i*90, 50, 50);
+                button.setBounds(220+column*100, 120+row*90, 50, 50);
                 frame.getContentPane().add(button);
-                lights[j][i] = button;
+                lights[column][row] = button;
             }
         }
         
@@ -158,15 +166,14 @@ public class Tp_View {
     }
     private JButton[][] gameInterfaceBottons4x4 () {
     	lights = new JButton[4][4];
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int row = 0; row < 4; row++) {
+            for (int column = 0; column < 4; column++) {
                 JButton button = new JButton("");
-                // Set button properties here
                 
                 button.setIcon(new ImageIcon(""));
-                button.setBounds(180+j*100, 70+i*90, 50, 50);
+                button.setBounds(180+column*100, 70+row*90, 50, 50);
                 frame.getContentPane().add(button);
-                lights[j][i] = button;
+                lights[column][row] = button;
             }
         }
         
@@ -175,20 +182,31 @@ public class Tp_View {
     
     private JButton[][] gameInterfaceBottons5x5 () {
     	lights = new JButton[5][5];
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
+        for (int row = 0; row < 5; row++) {
+            for (int column = 0; column < 5; column++) {
                 JButton button = new JButton("");
-                // Set button properties here
                 
                 button.setIcon(new ImageIcon(""));
-                button.setBounds(140+j*100, 30+i*90, 50, 50);
+                button.setBounds(140+column*100, 30+row*90, 50, 50);
                 frame.getContentPane().add(button);
-                lights[j][i] = button;
+                lights[column][row] = button;
             }
         }
         
         return lights;
     }
+    
+    public JButton[][] getGameInterface3x3() {
+    	return gameInterfaceBottons3x3();
+    }
+    public JButton[][] getGameInterface4x4() {
+    	return gameInterfaceBottons4x4();
+    }
+    
+    public JButton[][] getGameInterface5x5() {
+    	return gameInterfaceBottons5x5();
+    }
+    
     
     
     private JLabel attemtsLabel() {
@@ -203,16 +221,6 @@ public class Tp_View {
     }
  
     
-    public JButton[][] getGameInterface3x3() {
-    	return gameInterfaceBottons3x3();
-    }
-    public JButton[][] getGameInterface4x4() {
-    	return gameInterfaceBottons4x4();
-    }
-    
-    public JButton[][] getGameInterface5x5() {
-    	return gameInterfaceBottons5x5();
-    }
     
     
     
